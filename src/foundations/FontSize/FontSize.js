@@ -1,12 +1,12 @@
 const FontSize = {
-  mainTitle: 38,
-  bigTitle: 32,
-  title: 28,
-  title2: 22,
-  title3: 18,
-  body: 16,
-  footNote: 14,
-  caption: 12,
+  mainTitle: '38px',
+  bigTitle: '32px',
+  title: '28px',
+  title2: '22px',
+  title3: '18px',
+  body: '16px',
+  footNote: '14px',
+  caption: '12px',
 }
 
 export default FontSize
