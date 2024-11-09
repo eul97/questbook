@@ -1,9 +1,11 @@
 import axios from 'axios'
 
+const apiUrl = process.env.REACT_APP_COMMON_API_URL
 export const commonAPI = axios.create({
   headers: {
     Authorization: '',
   },
+  baseURL: apiUrl,
 })
 
 export const getAuthorization = () => {
