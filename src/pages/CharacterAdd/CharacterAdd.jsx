@@ -55,11 +55,7 @@ const CharacterAdd = props => {
       alert('캐릭터를 입력해주세요')
       return
     }
-    console.log(characterInfo)
     const auth = getAuthorization()
-    console.log('characterAdd : onClickConfirmButton dailyList ' + dailyList)
-    console.log('characterAdd : onClickConfirmButton weeklyList ' + weeklyList)
-    console.log('characterAdd : onClickConfirmButton monthlyList ' + monthlyList)
 
     createCharacter(auth, characterInfo, dailyList, weeklyList, monthlyList)
       .then(data => {

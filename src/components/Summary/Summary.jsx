@@ -18,7 +18,6 @@ import Thumbnail from 'src/components/Thumbnail/Thumbnail'
 const Summary = props => {
   const onClickSummary = () => {
     if (props.type === 'select') {
-      console.log('click 이벤트 ! ' + props.character.characterId)
       props.onClickSummary(props.character.characterId)
     }
   }

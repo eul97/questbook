@@ -16,7 +16,6 @@ const CharacterSelect = props => {
   const navigate = useNavigate()
 
   const updateCharacterList = () => {
-    console.log('called!')
     const loginToken = getAuthorization()
     if (loginToken === null) {
       alert('로그인 정보가 존재하지 않습니다.')
@@ -24,7 +23,6 @@ const CharacterSelect = props => {
       navigate('/login')
     } else {
       getCharacterList(loginToken).then(data => {
-        console.log(data)
         setCharacterList(data)
       })
     }
@@ -35,12 +33,10 @@ const CharacterSelect = props => {
   }, [])
 
   const onClickAddCharacterButton = () => {
-    console.log('onClickAddCharacterButton')
     navigate('/add')
   }
 
   const onClickSummary = characterId => {
-    console.log('CharacterSelect : onClickSummary! ' + characterId)
     navigate('/detail', {
       state: {
         characterId: characterId,
@@ -51,18 +47,6 @@ const CharacterSelect = props => {
   const displayCharacterList = characterList.map((character, index) => (
     <Summary character={character} key={index} type={'select'} onClickSummary={onClickSummary} />
   ))
-
-  //TODO: 실제 데이터 입력 후 삭제
-  const character = {
-    nickname: '이름',
-    world: '엘리시움',
-    level: '250',
-    job: '직업',
-    dailyRate: '50',
-    weeklyRate: '75',
-    monthlyRate: '100',
-    type: 'select',
-  }
 
   return (
     <Layout>

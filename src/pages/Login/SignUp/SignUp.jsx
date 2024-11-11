@@ -38,10 +38,8 @@ const SignUp = props => {
   useEffect(() => {
     loginToken = getAuthorization()
     if (loginToken === null) {
-      console.log('로그인 안되어있음')
       props.setLoginState(false)
     } else {
-      console.log('로그인 되어있음')
       props.setLoginState(true)
       alert('잘못된 접근입니다.')
       navigate('/character')

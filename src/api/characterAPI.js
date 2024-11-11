@@ -26,7 +26,6 @@ export const createCharacter = async (auth, characterInfo, dailyList, weeklyList
       monthlyList: monthlyList.map(todo => todo.content),
     },
   }
-  console.log(params)
 
   const response = await commonAPI.post('api/v1/character', params, {
     headers: {

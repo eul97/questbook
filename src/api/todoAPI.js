@@ -23,8 +23,6 @@ export const updateTodoList = async (auth, characterId, dailyList, weeklyList, m
       completed,
     })),
   }
-  console.log(todoList)
-  console.log(characterId)
   const response = await commonAPI.put('/api/v1/list', todoList, {
     params: { characterId: characterId },
     headers: { Authorization: auth },
@@ -37,7 +35,6 @@ export const checkTodo = async (auth, type, todoId) => {
     type: type,
     listId: todoId,
   }
-  console.log(auth)
   const response = await commonAPI.patch('api/v1/list', data, {
     headers: { Authorization: auth },
   })

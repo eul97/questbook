@@ -49,15 +49,13 @@ const CheckListModify = props => {
       alert('중복된 입력입니다.')
       return
     }
-    console.log(todoInput)
     const newTodo = {
       content: todoInput,
       completed: false,
       listId: null,
     }
-    
+
     props.setCheckList([...props.checkList, newTodo])
-    console.log(props.checkList)
     setTodoInput('')
   }
 

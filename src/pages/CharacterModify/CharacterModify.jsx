@@ -39,10 +39,8 @@ const CharacterModify = props => {
     getCharacterDetail(loginToken, characterId)
       .then(data => {
         setCharacterInfo(data)
-        console.log(data)
       })
       .catch(error => {
-        console.log(error)
         alert('캐릭터 정보를 불러오지 못했습니다.')
         navigate('/character')
       })
@@ -52,7 +50,6 @@ const CharacterModify = props => {
         setDailyList(data.dailyList)
         setWeeklyList(data.weeklyList)
         setMonthlyList(data.monthlyList)
-        console.log(dailyList)
       })
       .catch(error => {
         console.log(error)

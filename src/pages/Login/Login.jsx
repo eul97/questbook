@@ -15,10 +15,8 @@ const Login = props => {
   useEffect(() => {
     loginToken = getAuthorization()
     if (loginToken === null) {
-      console.log('로그인 안되어있음')
       props.setLoginState(false)
     } else {
-      console.log('로그인 되어있음')
       props.setLoginState(true)
       navigate('/character')
     }
@@ -36,15 +34,11 @@ const Login = props => {
     }
     login(inputEmailField, inputPasswordField)
       .then(data => {
-        console.log(data.accessToken)
         alert('성공적으로 로그인되었습니다.')
         sessionStorage.setItem('loginToken', data.accessToken)
         sessionStorage.setItem('loginState', true)
         props.setLoginState(true)
         navigate('/character')
-
-        console.log('로그인 성공')
-        console.log(sessionStorage.getItem('loginToken'))
       })
       .catch(error => {
         console.log(error)

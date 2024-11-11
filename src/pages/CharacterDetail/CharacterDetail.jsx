@@ -35,13 +35,11 @@ const CharacterDetail = props => {
       return
     }
 
-    console.log('updateList 호출')
     getTodoList(loginToken, characterId)
       .then(data => {
         setDailyList(data.dailyList)
         setWeeklyList(data.weeklyList)
         setMonthlyList(data.monthlyList)
-        console.log(dailyList)
       })
       .catch(error => {
         console.log(error)
@@ -51,7 +49,6 @@ const CharacterDetail = props => {
     getCharacterDetail(loginToken, characterId)
       .then(data => {
         setCharacter(data)
-        console.log(data)
       })
       .catch(error => {
         console.log(error)
@@ -63,7 +60,6 @@ const CharacterDetail = props => {
     const loginToken = getAuthorization()
     checkTodo(loginToken, type, listId)
       .then(() => {
-        console.log('체크리스트 선택')
         setUpdateStateFlag(!updateStateFlag)
       })
       .catch(error => {
