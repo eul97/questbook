@@ -55,5 +55,5 @@
     "webpack-cli": "^5.1.4"
   },
   "proxy": "http://questbook.store:8081/",
-  "homepage": "https://eul97.github.io/questbook/"
+  "homepage": "https://quest-book.store/"
 }

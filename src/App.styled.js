@@ -6,7 +6,7 @@ export const Layout = styled.div`
 
   width: 100%;
   min-width: 1280px;
-  height: 100vh;
+  min-height: 100vh;
   overflow: auto;
 `
 
@@ -26,6 +26,7 @@ export const BackGround = styled.div`
 
 export const MainFrameLayout = styled.div`
   display: flex;
+  flex-direction: column;
 
   width: 100%;
   height: 100%;

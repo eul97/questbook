@@ -11,12 +11,8 @@ const Login = props => {
   const [inputPasswordField, setInputPasswordField] = useState('')
   const navigate = useNavigate()
   let loginToken = null
-  // const setLoginState = loginState => {
-  //   props.setLoginState(loginState)
-  // }
 
   useEffect(() => {
-    console.log('login.jsx')
     loginToken = getAuthorization()
     if (loginToken === null) {
       console.log('로그인 안되어있음')

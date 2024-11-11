@@ -4,7 +4,7 @@ import Theme from './styles/theme'
 import GlobalStyle from './styles/global'
 import TopFrame from 'src/frames/TopFrame'
 import { useState } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Route, Routes } from 'react-router-dom'
 import {
   CharacterAdd,
   CharacterDetail,
@@ -53,21 +53,21 @@ function App() {
               element={<CharacterAdd loginState={loginState} setLoginState={setLoginState} />}
             />
           </Routes>
+          <BottomFrame />
         </MainFrameLayout>
-        <BottomFrame />
       </BackGround>
     </Layout>
   )
 
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <Layout>
         <ThemeProvider theme={Theme}>
           <GlobalStyle />
           {display()}
         </ThemeProvider>
       </Layout>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 

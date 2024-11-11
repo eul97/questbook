@@ -22,17 +22,21 @@ import { useNavigate } from 'react-router-dom'
 const SignUp = props => {
   const [inputEmail, setInputEmail] = useState('')
   const [inputRegisterKey, setInputRegisterKey] = useState('')
-  const [emailFlag, setEmailFlag] = useState(false)
-  const [emailChangeFlag, setEmailChangeFlag] = useState(true)
   const [emailRegisterFlag, setEmailRegisterFlag] = useState(false)
   const [passwordInput, setPasswordInput] = useState('')
   const [passwordCheckInput, setPasswordCheckInput] = useState('')
+  const [disableAuthInput, setDisableAuthInput] = useState(true)
+  const [visibleAuthButton, setVisibleAuthButton] = useState(false)
+  const [disableEmailInput, setDisableEmailInput] = useState(false)
+  const [visibleEmailButton, setVisibleEmailButton] = useState(true)
   const [isAgreed, setIsAgreed] = useState(false)
   const navigate = useNavigate()
+  const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  let loginToken = null
 
   useEffect(() => {
-    console.log('signup.jsx')
-    const loginToken = getAuthorization()
+    loginToken = getAuthorization()
     if (loginToken === null) {
       console.log('로그인 안되어있음')
       props.setLoginState(false)
@@ -43,31 +47,54 @@ const SignUp = props => {
       navigate('/character')
     }
   }, [])
-  
+
   const onClickRegisterEmailButton = () => {
-    console.log(inputEmail)
     if (inputEmail === null || inputEmail === '') {
       alert('이메일을 입력하세요')
       return
     }
+    if (emailPattern.test(inputEmail) === false) {
+      alert('올바른 이메일 형식이 아닙니다.')
+      return
+    }
 
-    emailRegister(inputEmail).then(data => {
-      alert('이메일 전송이 완료되었습니다')
-      console.log(data)
-      setEmailFlag(true)
-      setEmailChangeFlag(false)
-    })
-    //TODO: 코드 10분간 유효 세션처리
+    emailRegister(inputEmail)
+      .then(data => {
+        alert('이메일 전송이 완료되었습니다')
+        setDisableAuthInput(false)
+        setVisibleAuthButton(true)
+      })
+      .catch(error => {
+        console.log(error.response.data.code)
+        console.log(error.response)
+        if (error.response.data.code === 'INVALID_ARGUMENT') {
+          alert('올바른 이메일 형식이 아닙니다.')
+        } else {
+          alert('이메일 전송에 실패하였습니다.')
+          console.log(error)
+        }
+      })
+    //TODO: 코드 10분간 유효 세션처리, 전송시에 재전송으로 버튼 변경
   }
 
   const conClickRegisterCheckButton = () => {
-    console.log(inputEmail)
-    console.log(inputRegisterKey)
-    verifyEmail(inputEmail, inputRegisterKey).then(data => {
-      alert('인증이 완료되었습니다')
-      setEmailRegisterFlag(true)
-    })
-    //TODO: 인증 실패 시 예외처리
+    verifyEmail(inputEmail, inputRegisterKey)
+      .then(data => {
+        alert('인증이 완료되었습니다')
+        setEmailRegisterFlag(true)
+        setDisableAuthInput(true)
+        setVisibleAuthButton(false)
+        setDisableEmailInput(true)
+        setVisibleEmailButton(false)
+      })
+      .catch(error => {
+        if (error.response.data.code === 'INCORRECT_CODE') {
+          alert('인증번호가 올바르지 않습니다.')
+        } else {
+          alert('인증에 실패하였습니다.')
+          console.log(error)
+        }
+      })
   }
 
   const onClickConfirmButton = () => {
@@ -79,15 +106,24 @@ const SignUp = props => {
       alert('비밀번호가 일치하지 않습니다.')
       return
     }
-    //TODO: 예외처리 좀 더 상세하게
-    //비밀번호 조합 정규식 처리
-    singIn(inputEmail, passwordInput).then(data => {
-      alert('회원가입이 완료되었습니다')
-    })
-  }
+    if (passwordPattern.test(passwordInput) === false) {
+      alert('비밀번호는 8자리 이상의 문자, 숫자, 특수문자로 구성되어야 합니다.')
+      return
+    }
 
-  const onClickAgreeButton = () => {
-    setIsAgreed(true)
+    singIn(inputEmail, passwordInput)
+      .then(data => {
+        alert('회원가입이 완료되었습니다.')
+        navigate('/login')
+      })
+      .catch(error => {
+        if (error.response.data.code === 'INVALID_ARGUMENT') {
+          alert('비밀번호는 8자리 이상의 문자, 숫자, 특수문자로 구성되어야 합니다.')
+        } else {
+          alert('회원가입에 실패하였습니다.')
+          console.log(error)
+        }
+      })
   }
 
   const displayTerms = () => {
@@ -134,6 +170,7 @@ const SignUp = props => {
             onClick={() => {
               setIsAgreed(true)
             }}
+            isVisible={true}
           >
             동의합니다
           </SmallButton>
@@ -154,9 +191,11 @@ const SignUp = props => {
             type={'email'}
             value={inputEmail}
             onChange={e => setInputEmail(e.target.value)}
-            disabled={!emailChangeFlag}
+            disabled={disableEmailInput}
           />
-          <SmallButton onClick={onClickRegisterEmailButton}>인증번호 전송</SmallButton>
+          <SmallButton onClick={onClickRegisterEmailButton} isVisible={visibleEmailButton}>
+            인증번호 전송
+          </SmallButton>
         </RowLayout>
         <TextLabel>인증번호 확인</TextLabel>
         <RowLayout>
@@ -165,9 +204,9 @@ const SignUp = props => {
             marginTop={'10px'}
             value={inputRegisterKey}
             onChange={e => setInputRegisterKey(e.target.value)}
-            disabled={!emailFlag}
+            disabled={disableAuthInput}
           />
-          <SmallButton onClick={conClickRegisterCheckButton} disabled={!emailFlag}>
+          <SmallButton onClick={conClickRegisterCheckButton} isVisible={visibleAuthButton}>
             인증 확인
           </SmallButton>
         </RowLayout>

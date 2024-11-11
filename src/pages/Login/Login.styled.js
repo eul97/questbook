@@ -70,6 +70,8 @@ export const SmallButton = styled.button`
   font-size: ${({ theme }) => theme.fontSize.title3};
   font-weight: 600;
   cursor: pointer;
+
+  display: ${props => (props.isVisible ? 'block' : 'none')};
 `
 
 export const LabelLayout = styled.div`

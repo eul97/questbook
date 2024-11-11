@@ -26,10 +26,9 @@ export const ListLayout = styled.div`
   flex-direction: column;
 
   width: 100%;
-  height: 1000px;
+  min-height: 1000px;
 
   gap: 30px;
-  overflow: auto;
 `
 
 export const BlurText = styled.p`
