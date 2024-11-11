@@ -16,16 +16,14 @@ const CheckListModify = props => {
   const [todoInput, setTodoInput] = useState('')
 
   const displayCheckList = props.checkList.map((todo, index) => (
-    <ElementLayout key={index}>
+    <ElementLayout
+      key={index}
+      onClick={() => {
+        onClickTodo(index)
+      }}
+    >
       <DeleteIcon />
-      <Todo
-        checked={false}
-        onClick={() => {
-          onClickTodo(index)
-        }}
-      >
-        {todo.content}
-      </Todo>
+      <Todo checked={false}>{todo.content}</Todo>
     </ElementLayout>
   ))
 
