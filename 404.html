@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='refresh' content="0; URL='/'" />
+  <script type='text/javascript'>
+    // URL을 hash 형태로 변경하여 리다이렉트
+    if (window.location.pathname !== '/') {
+      window.location.href = '/' + '#' + window.location.pathname
+    }
+  </script>
+</head>
+<body></body>
+</html>
