@@ -67,7 +67,7 @@ const TopFrame = props => {
       // alert('현재 서버 점검으로 접속이 불가능합니다.\n(매일 23:50 ~ 24:00 정기점검)')
       return
     }
-    props.loginState ? navigate('/character') : navigate('/login')
+    props.loginState ? navigate('/character') : navigate('/')
   }
 
   const displayButton = props.loginState ? (

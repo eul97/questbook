@@ -4,7 +4,7 @@ import Theme from './styles/theme'
 import GlobalStyle from './styles/global'
 import { useState } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
-import { CharacterAdd, CharacterDetail, CharacterModify, CharacterSelect, Login, SignUp } from 'src/pages'
+import { CharacterAdd, CharacterDetail, CharacterModify, CharacterSelect, Home, Login, SignUp } from 'src/pages'
 import { BottomFrame, TopFrame } from 'src/frames'
 
 // function CheckBatch() {
@@ -33,7 +33,7 @@ import { BottomFrame, TopFrame } from 'src/frames'
 // }
 
 function App() {
-  const [loginState, setLoginState] = useState(sessionStorage.getItem('loginState') || 'false')
+  const [loginState, setLoginState] = useState(sessionStorage.getItem('loginState') !== null)
 
   const display = () => (
     <Layout>
@@ -43,7 +43,7 @@ function App() {
           <Routes>
             <Route
               path={'/'}
-              element={<Login loginState={loginState} setLoginState={setLoginState} />}
+              element={<Home loginState={loginState} setLoginState={setLoginState} />}
             />
             <Route
               path="/login"

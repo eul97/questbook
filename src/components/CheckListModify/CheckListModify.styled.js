@@ -154,4 +154,5 @@ export const Todo = styled.div`
   font-weight: 500;
 
   align-items: center;
+  text-overflow: ellipsis;
 `
