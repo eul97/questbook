@@ -31,7 +31,8 @@ const SignUp = props => {
   const [visibleEmailButton, setVisibleEmailButton] = useState(true)
   const [isAgreed, setIsAgreed] = useState(false)
   const navigate = useNavigate()
-  const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+  const passwordPattern =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&~#^()_\-+=])[A-Za-z\d@$!%*?&~#^()_\-+=]{8,}$/
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   let loginToken = null
 
@@ -190,6 +191,7 @@ const SignUp = props => {
             value={inputEmail}
             onChange={e => setInputEmail(e.target.value)}
             disabled={disableEmailInput}
+            maxLength={50}
           />
           <SmallButton onClick={onClickRegisterEmailButton} isVisible={visibleEmailButton}>
             인증번호 전송
@@ -203,6 +205,7 @@ const SignUp = props => {
             value={inputRegisterKey}
             onChange={e => setInputRegisterKey(e.target.value)}
             disabled={disableAuthInput}
+            maxLength={6}
           />
           <SmallButton onClick={conClickRegisterCheckButton} isVisible={visibleAuthButton}>
             인증 확인
@@ -214,6 +217,7 @@ const SignUp = props => {
           marginTop={'10px'}
           type={'password'}
           onChange={e => setPasswordInput(e.target.value)}
+          maxLength={30}
         />
         <TextLabel>비밀번호 확인</TextLabel>
         <Input
@@ -221,6 +225,7 @@ const SignUp = props => {
           marginTop={'10px'}
           type={'password'}
           onChange={e => setPasswordCheckInput(e.target.value)}
+          maxLength={30}
         />
         <Button onClick={onClickConfirmButton}>완료</Button>
       </ContentLayout>

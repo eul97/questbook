@@ -67,8 +67,8 @@ export const ElementLayout = styled.div`
   display: flex;
   flex-direction: row;
 
-  max-width: 260px;
-  min-width: 150px;
+  width: 300px;
+  min-width: 240px;
   height: 26px;
   min-height: 26px;
   align-items: center;
@@ -97,7 +97,7 @@ export const CheckBox = styled.div`
 export const Todo = styled.div`
   display: flex;
 
-  width: 200px;
+  width: 240px;
   height: 24px;
 
   color: ${({ theme }) => theme.color.white};
@@ -105,5 +105,5 @@ export const Todo = styled.div`
   font-weight: 500;
 
   align-items: center;
-  text-overflow: ellipsis;
+  white-space: nowrap;
 `

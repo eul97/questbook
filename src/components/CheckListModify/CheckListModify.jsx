@@ -23,7 +23,9 @@ const CheckListModify = props => {
       }}
     >
       <DeleteIcon />
-      <Todo checked={false}>{todo.content}</Todo>
+      <Todo checked={false} title={todo.content}>
+        {todo.content}
+      </Todo>
     </ElementLayout>
   ))
 
@@ -75,6 +77,7 @@ const CheckListModify = props => {
             onChange={handleInputChange}
             onKeyPress={handleKeyDown}
             disabled={!props.characterSearchFlag}
+            maxLength={30}
           />
         </InputLayout>
         {displayCheckList}

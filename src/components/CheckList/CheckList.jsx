@@ -18,7 +18,9 @@ const CheckList = props => {
       }}
     >
       <CheckBox checked={todo.completed} />
-      <Todo checked={todo.completed}>{todo.content}</Todo>
+      <Todo checked={todo.completed} title={todo.content}>
+        {todo.content}
+      </Todo>
     </ElementLayout>
   ))
 

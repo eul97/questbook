@@ -26,6 +26,7 @@ const ModifyInfo = props => {
         value={props.characterNameInput}
         onChange={onChangeCharacterNameInput}
         onKeyDown={onPressEnter}
+        maxLength={24}
       ></InputLayout>
       <Button onClick={props.onClickSearchButton}>검색</Button>
     </InnerLayout>

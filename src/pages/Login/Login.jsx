@@ -67,6 +67,7 @@ const Login = props => {
           placeholder="이메일"
           value={inputEmailField}
           onChange={e => setInputEmailField(e.target.value)}
+          maxLength={50}
         />
         <Input
           placeholder="비밀번호"
@@ -74,6 +75,7 @@ const Login = props => {
           value={inputPasswordField}
           onChange={e => setInputPasswordField(e.target.value)}
           onKeyDown={onPressEnterOnPasswordField}
+          maxLength={30}
         />
         <Button onClick={onClickLoginButton}>로그인</Button>
         {/*<LabelLayout>*/}
