@@ -1,4 +1,4 @@
-import { ButtonLayout, Layout } from 'src/frames/TopFrame/TopFrame.styled'
+import { BackGround, ButtonLayout, Layout } from 'src/frames/TopFrame/TopFrame.styled'
 import { LoginButton, LogoutButton, SignUpButton } from 'src/components'
 import { ReactComponent as Logo } from 'src/assets/logo.svg'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -99,10 +99,12 @@ const TopFrame = props => {
   // }
 
   return (
-    <Layout>
-      <Logo style={{ cursor: 'pointer' }} onClick={onClickLogo} />
-      {displayButton}
-    </Layout>
+    <BackGround>
+      <Layout>
+        <Logo style={{ cursor: 'pointer' }} onClick={onClickLogo} />
+        {displayButton}
+      </Layout>
+    </BackGround>
   )
 }
 
