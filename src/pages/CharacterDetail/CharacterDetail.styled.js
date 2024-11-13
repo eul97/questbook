@@ -5,8 +5,7 @@ export const Layout = styled.div`
   flex-direction: column;
 
   width: 70%;
-  max-width: 1380px;
-  min-width: 1180px;
+  min-width: 1280px;
 
   gap: 30px;
 `
@@ -27,6 +26,7 @@ export const TopLayout = styled.div`
 
   padding-left: 15px;
   padding-right: 10px;
+  margin-top: 30px;
 `
 
 export const CheckListLayout = styled.div`

@@ -5,7 +5,7 @@ export const Layout = styled.div`
   flex-direction: column;
 
   width: 100%;
-  min-width: 1280px;
+  min-width: 1720px;
   min-height: 100vh;
   overflow: auto;
 `
@@ -15,6 +15,11 @@ export const BackGround = styled.div`
 
   width: 100%;
   height: 100%;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
 
   background: radial-gradient(
     ${({ theme }) => theme.color.backgroundStart} 0%,
@@ -27,9 +32,9 @@ export const MainFrameLayout = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 100%;
   height: 100%;
   min-height: 1180px;
+  min-width: 1400px;
 
   align-items: center;
   justify-content: center;
