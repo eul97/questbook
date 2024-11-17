@@ -1,12 +1,13 @@
 {
   "files": {
     "main.css": "/static/css/main.62681827.css",
-    "main.js": "/static/js/main.78e48b6d.js",
+    "main.js": "/static/js/main.33d31541.js",
     "static/js/453.9b5d9cf8.chunk.js": "/static/js/453.9b5d9cf8.chunk.js",
     "static/media/signUpButton.svg": "/static/media/signUpButton.7156980574d07df9857cbe795a6e294d.svg",
     "static/media/loginButtonHover.svg": "/static/media/loginButtonHover.5c150d9ce20d74d8d5efb147f77f0e15.svg",
-    "static/media/logo.svg": "/static/media/logo.d7418c665d4457a2ca5fa808b3e5996f.svg",
+    "static/media/logoHover.svg": "/static/media/logoHover.d7418c665d4457a2ca5fa808b3e5996f.svg",
     "static/media/loginButton.svg": "/static/media/loginButton.604a218dbf6203980c086fd108f8d8d6.svg",
+    "static/media/logo.svg": "/static/media/logo.c9a13d1e7b3a5d27468d59d03932af8a.svg",
     "static/media/signUpButtonHover.svg": "/static/media/signUpButtonHover.1ac66456c4db4205ae49c0a201908920.svg",
     "static/media/logoutButtonHover.svg": "/static/media/logoutButtonHover.2f84bef43b69886d3df4135a85c50c9c.svg",
     "static/media/modifyBorder.svg": "/static/media/modifyBorder.bbcadfddc45dac75b9fe7bdad2db59b6.svg",
@@ -26,11 +27,11 @@
     "static/media/imageDivider.svg": "/static/media/imageDivider.8cd96916cfc05e81095760aec1f2f993.svg",
     "static/media/buttonDivider.svg": "/static/media/buttonDivider.9b38b996596b34c57ba742dd9256446d.svg",
     "main.62681827.css.map": "/static/css/main.62681827.css.map",
-    "main.78e48b6d.js.map": "/static/js/main.78e48b6d.js.map",
+    "main.33d31541.js.map": "/static/js/main.33d31541.js.map",
     "453.9b5d9cf8.chunk.js.map": "/static/js/453.9b5d9cf8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.62681827.css",
-    "static/js/main.78e48b6d.js"
+    "static/js/main.33d31541.js"
   ]
 }
